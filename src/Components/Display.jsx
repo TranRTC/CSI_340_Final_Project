@@ -12,7 +12,7 @@ const Display = ({ data, onRemove }) => {
         <ul>
           {data.forecast.slice(0, 5).map((hour, index) => (
             <li key={index}>
-              🕐 {hour.time} → 🌡 {hour.temperature}°C, 💧 {hour.humidity}%, 💨 {hour.windSpeed} km/h
+              🕐 {hour.time} → 🌡 {hour.temperature}°C, 💧 {hour.humidity}%, 🌬️ {hour.windSpeed} km/h
             </li>
           ))}
         </ul>
