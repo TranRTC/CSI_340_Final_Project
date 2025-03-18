@@ -1,3 +1,4 @@
+// This component displays display weather detail for a single city
 const Display = ({ data, onRemove }) => {
     return (
       <div className="display-card">

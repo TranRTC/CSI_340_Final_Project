@@ -1,3 +1,4 @@
+// This component renders the header of the Weather Dashboard
 const Header = () => {
     return (
       <header className="header">

@@ -1,12 +1,14 @@
 import { useState } from "react";
 
+// This component handle user input for adding a city
 const Request = ({ onSearch }) => {
   const [city, setCity] = useState("");
 
+  // handle submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (city.trim() === "") return; // Prevent empty input
-    onSearch(city); // Send city to App.js
+    onSearch(city); // Call function to fetch weather data
     setCity(""); // Clear input after submission
   };
 
