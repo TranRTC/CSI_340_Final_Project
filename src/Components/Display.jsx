@@ -2,10 +2,10 @@
 const Display = ({ data, onRemove }) => {
     return (
       <div className="display-card">
-        <h2>🏙 {data.city}</h2>
+        <h2>🏛️ {data.city}</h2>
         <p>🌡 Temperature: {data.temperature}°C</p>
         <p>💧 Humidity: {data.humidity}%</p>
-        <p>💨 Wind Speed: {data.windSpeed} km/h</p>
+        <p>🌬️ Wind Speed: {data.windSpeed} km/h</p>
         <p>⏳ Last Updated: {data.lastUpdate}</p>
   
         <h3>📅 Hourly Forecast (Next 5 Hours)</h3>
