@@ -84,8 +84,11 @@ import { useState, useEffect, useCallback } from "react";
 import Request from "./Components/Request";
 import Displays from "./Components/Displays";
 import "./App.css";
+import Header from "./Components/Header"
+import Footer from "./Components/Footer";
 
 const App = () => {
+  // 
   const [weatherData, setWeatherData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -189,11 +192,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>🌤 Weather Dashboard</h1>
+      {/*<h1>🌤 Weather Dashboard</h1>*/}
+      <Header/>
       <Request onSearch={fetchWeather} />
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <Displays weatherData={weatherData} onRemove={removeCity} />
+      <Footer/>
     </div>
   );
 };
