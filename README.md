@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Weather Dashboard React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Purpose of the Application:
+- The Weather Dashboard is a React-based web application that allows users to:
 
-## Available Scripts
+- Search for any city and view its current weather conditions.
 
-In the project directory, you can run:
+- See a 5-hour forecast including temperature, humidity, and wind speed.
 
-### `npm start`
+- Display multiple cities' weather data at once.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Remove cities from the dashboard.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Auto-refresh data every 5 minutes.
 
-### `npm test`
+This app demonstrates how to fetch live data from open APIs and update the UI dynamically using React.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# How Components Are Rendered Dynamically
+The application uses a modular component structure:
 
-### `npm run build`
+1. App.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Main component that manages global state using useState and useEffect.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Calls child components: Header, Request, Displays, and Footer.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Handles API requests and manages auto-refresh logic.
 
-### `npm run eject`
+2. Request.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Allows user input to search for a city.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Calls fetchWeather(city) passed from App.js.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Displays.js
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Iterates over the weatherData array using .map() to render a Display component for each city.
 
-## Learn More
+4. Display.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Displays the weather info and forecast for one city.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Includes a remove button linked to the onRemove handler passed via props
 
-### Code Splitting
+5. useEffect + setInterval
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Enables auto-refresh every 5 minutes to keep data live.
 
-### Analyzing the Bundle Size
+# How to Run the Application Locally
+- Prerequisites: Node.js and npm installed
+- Installation Steps:
+    # 1. Clone the repository
+    https://github.com/TranRTC/CSI_340_Final_Project.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    # 2. Install dependencies
+    npm install
 
-### Making a Progressive Web App
+    # 3. Start the development server
+    npm start
+- Access in Browser: Visit: http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Testing
 
-### Advanced Configuration
+This project supports testing with:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Mocha + Chai for unit tests
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cypress for end-to-end UI testing
+Run tests with:
+# Unit tests: 
+    npx mocha ./test/WeatherApp.test.js
+# E2E tests
+    npx cypress open
