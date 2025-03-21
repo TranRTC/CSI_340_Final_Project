@@ -113,7 +113,7 @@ const App = () => {
       // The "geoData" object have many place then only need take first place
       const { lat, lon, display_name } = geoData[0];
 
-      // Fetch weather data using Open-Meteo API
+      // After getting the coordinate from previous API then Fetch weather data using Open-Meteo API
       const weatherResponse = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
       );
