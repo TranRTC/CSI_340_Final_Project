@@ -64,7 +64,7 @@ This project supports:
 - OpenStreetMap Nominatim (city geocoding)
 
 ## License
-MIT License
+No License
 
 ## Acknowledgments
 Thanks to Open-Meteo and OpenStreetMap contributors for their free public APIs.
