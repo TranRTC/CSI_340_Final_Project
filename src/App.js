@@ -88,9 +88,13 @@ import Header from "./Components/Header"
 import Footer from "./Components/Footer";
 
 const App = () => {
-  // 
+  // state variable hold data to render all city
   const [weatherData, setWeatherData] = useState([]);
+  
+  // state variable to hold state of fetching data
   const [loading, setLoading] = useState(false);
+
+  // state variable hold the error status
   const [error, setError] = useState(null);
 
   // Function to handle city search
@@ -115,7 +119,7 @@ const App = () => {
       );
       const weatherJson = await weatherResponse.json();
 
-      // Extract relevant data
+      // Extract weather data and create new data object
       const newCityWeather = {
         city: display_name,
         lat,
@@ -133,7 +137,7 @@ const App = () => {
         })),
       };
 
-      // Update weather data state
+      // Update (add) new weather data object to weatherData
       setWeatherData([...weatherData, newCityWeather]);
     } catch (err) {
       setError(err.message);
@@ -179,7 +183,7 @@ const App = () => {
   useEffect(() => {
     if (weatherData.length === 0) return; // Don't run if no cities stored
     const interval = setInterval(updateWeather, 5 * 60 * 1000); // Runs every 5 minutes
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval); // Cleanup
   }, [weatherData, updateWeather]);
 
   // Function to remove a city from weatherData
@@ -191,8 +195,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      {/*<h1>🌤 Weather Dashboard</h1>*/}
+    <div className="App">      
       <Header/>
       <Request onSearch={fetchWeather} />
       {loading && <p>Loading...</p>}
