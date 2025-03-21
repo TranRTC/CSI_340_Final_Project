@@ -27,6 +27,12 @@ It demonstrates fetching and displaying live data using React and open APIs.
 - Displays one city’s weather and forecast.
 - Remove button calls onRemove(city).
 
+### Header.js
+- Displays the main title or heading for the app.
+
+### Footer.js
+- Displays footer information or credits.
+
 ### Auto Refresh
 - useEffect and setInterval run every 5 minutes to update weather.
 
