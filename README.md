@@ -1,98 +1,71 @@
-Weather Dashboard (React App)
+# Weather Dashboard (React App)
 
-Purpose
-
+## Purpose
 The Weather Dashboard is a React app that allows users to:
-
-Search and display live weather for multiple cities.
-
-View current conditions and 5-hour forecasts (temperature, humidity, wind speed).
-
-Automatically refresh data every 5 minutes.
-
-Add or remove cities dynamically.
+- Search and display live weather for multiple cities.
+- View current conditions and 5-hour forecasts (temperature, humidity, wind speed).
+- Automatically refresh data every 5 minutes.
+- Add or remove cities dynamically.
 
 It demonstrates fetching and displaying live data using React and open APIs.
 
-Component Structure (Dynamic Rendering)
+## Component Structure (Dynamic Rendering)
 
-App.js
+### App.js
+- Main component with useState and useEffect.
+- Calls: Header, Request, Displays, and Footer.
+- Handles API calls and auto-refresh logic.
 
-Main component with useState and useEffect.
+### Request.js
+- User input field to search a city.
+- Calls fetchWeather(city) via props.
 
-Calls: Header, Request, Displays, and Footer.
+### Displays.js
+- Maps through weatherData to render a Display for each city.
 
-Handles API calls and auto-refresh logic.
+### Display.js
+- Displays one city’s weather and forecast.
+- Remove button calls onRemove(city).
 
-Request.js
+### Auto Refresh
+- useEffect and setInterval run every 5 minutes to update weather.
 
-User input field to search a city.
+## How to Run the App Locally
 
-Calls fetchWeather(city) via props.
+### Prerequisites:
+- Node.js and npm installed
 
-Displays.js
+### Steps:
+1. Clone the repository:
+   https://github.com/TranRTC/CSI_340_Final_Project.git
+2. Navigate to the project folder:
+   cd CSI_340_Final_Project
+3. Install dependencies:
+   npm install
+4. Start the app:
+   npm start
+5. Open in browser:
+   http://localhost:3000
 
-Maps through weatherData to render a Display for each city.
-
-Display.js
-
-Displays one city’s weather and forecast.
-
-Remove button calls onRemove(city).
-
-Auto Refresh
-
-useEffect and setInterval run every 5 minutes to update weather.
-
-How to Run the App Locally
-
-Prerequisites:
-
-Node.js and npm installed
-
-Steps:
-
-Clone the repository:
-https://github.com/TranRTC/CSI_340_Final_Project.git
-
-Navigate to the project folder:
-cd CSI_340_Final_Project
-
-Install dependencies:
-npm install
-
-Start the app:
-npm start
-
-Open in browser:
-http://localhost:3000
-
-Testing
+## Testing
 
 This project supports:
+- Mocha + Chai for unit tests
+- Cypress for end-to-end tests
 
-Mocha + Chai for unit tests
+### Run Tests:
+- Unit tests:
+  npx mocha ./test/WeatherApp.test.js
+- E2E tests:
+  npx cypress open
 
-Cypress for end-to-end tests
+## APIs Used
+- Open-Meteo (weather data)
+- OpenStreetMap Nominatim (city geocoding)
 
-Run Tests:
-
-Unit tests:
-npx mocha ./test/WeatherApp.test.js
-
-E2E tests:
-npx cypress open
-
-APIs Used
-
-Open-Meteo (weather data)
-
-OpenStreetMap Nominatim (city geocoding)
-
-License
-
+## License
 MIT License
 
-Acknowledgments
-
+## Acknowledgments
 Thanks to Open-Meteo and OpenStreetMap contributors for their free public APIs.
+
