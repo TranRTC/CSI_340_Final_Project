@@ -1,73 +1,98 @@
-# Weather Dashboard React App
+Weather Dashboard (React App)
 
-# Purpose of the Application:
-- The Weather Dashboard is a React-based web application that allows users to:
+Purpose
 
-- Search for any city and view its current weather conditions.
+The Weather Dashboard is a React app that allows users to:
 
-- See a 5-hour forecast including temperature, humidity, and wind speed.
+Search and display live weather for multiple cities.
 
-- Display multiple cities' weather data at once.
+View current conditions and 5-hour forecasts (temperature, humidity, wind speed).
 
-- Remove cities from the dashboard.
+Automatically refresh data every 5 minutes.
 
-- Auto-refresh data every 5 minutes.
+Add or remove cities dynamically.
 
-This app demonstrates how to fetch live data from open APIs and update the UI dynamically using React.
+It demonstrates fetching and displaying live data using React and open APIs.
 
-# How Components Are Rendered Dynamically
-The application uses a modular component structure:
+Component Structure (Dynamic Rendering)
 
-1. App.js
+App.js
 
-Main component that manages global state using useState and useEffect.
+Main component with useState and useEffect.
 
-Calls child components: Header, Request, Displays, and Footer.
+Calls: Header, Request, Displays, and Footer.
 
-Handles API requests and manages auto-refresh logic.
+Handles API calls and auto-refresh logic.
 
-2. Request.js
+Request.js
 
-Allows user input to search for a city.
+User input field to search a city.
 
-Calls fetchWeather(city) passed from App.js.
+Calls fetchWeather(city) via props.
 
-3. Displays.js
+Displays.js
 
-Iterates over the weatherData array using .map() to render a Display component for each city.
+Maps through weatherData to render a Display for each city.
 
-4. Display.js
+Display.js
 
-Displays the weather info and forecast for one city.
+Displays one city’s weather and forecast.
 
-Includes a remove button linked to the onRemove handler passed via props
+Remove button calls onRemove(city).
 
-5. useEffect + setInterval
+Auto Refresh
 
-Enables auto-refresh every 5 minutes to keep data live.
+useEffect and setInterval run every 5 minutes to update weather.
 
-# How to Run the Application Locally
-- Prerequisites: Node.js and npm installed
-- Installation Steps:
-    # 1. Clone the repository
-    https://github.com/TranRTC/CSI_340_Final_Project.git
+How to Run the App Locally
 
-    # 2. Install dependencies
-    npm install
+Prerequisites:
 
-    # 3. Start the development server
-    npm start
-- Access in Browser: Visit: http://localhost:3000
+Node.js and npm installed
 
-# Testing
+Steps:
 
-This project supports testing with:
+Clone the repository:
+https://github.com/TranRTC/CSI_340_Final_Project.git
+
+Navigate to the project folder:
+cd CSI_340_Final_Project
+
+Install dependencies:
+npm install
+
+Start the app:
+npm start
+
+Open in browser:
+http://localhost:3000
+
+Testing
+
+This project supports:
 
 Mocha + Chai for unit tests
 
-Cypress for end-to-end UI testing
-Run tests with:
-# Unit tests: 
-    npx mocha ./test/WeatherApp.test.js
-# E2E tests
-    npx cypress open
+Cypress for end-to-end tests
+
+Run Tests:
+
+Unit tests:
+npx mocha ./test/WeatherApp.test.js
+
+E2E tests:
+npx cypress open
+
+APIs Used
+
+Open-Meteo (weather data)
+
+OpenStreetMap Nominatim (city geocoding)
+
+License
+
+MIT License
+
+Acknowledgments
+
+Thanks to Open-Meteo and OpenStreetMap contributors for their free public APIs.
