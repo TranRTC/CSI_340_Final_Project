@@ -61,7 +61,7 @@ This project supports:
 
 ### Run Tests:
 - Unit tests:
-  npx mocha ./test/WeatherApp.test.js
+  npx mocha ./test/WeatherApp.js
 - E2E tests:
   npx cypress open
 
