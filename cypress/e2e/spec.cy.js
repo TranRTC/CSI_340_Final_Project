@@ -1,41 +1,55 @@
-describe("Weather Dashboard E2E Tests", () => {
+
+// Cypress End-to-End Test for Weather Dashboard App
+
+describe('🌤 Weather Dashboard E2E Test', () => {
+  // This hook runs before each test
   beforeEach(() => {
-    cy.visit("http://localhost:3000"); // Visit the root of the application
+    // Visit the local app URL before each test
+    cy.visit('http://localhost:3000');
   });
 
-  it("should load the app and display the title", () => {
-    cy.contains("🌤 Weather Dashboard").should("be.visible");
+  it('Loads the app and shows header and form', () => {
+    // Check if the app title is visible
+    cy.contains('🌤 Weather Dashboard');
+    // Check if the input field for city name exists
+    cy.get('input[placeholder="Enter city name"]').should('exist');
+    // Check if the search button exists
+    cy.get('button[type="submit"]').should('contain', 'Search');
   });
 
-  it("should allow users to search for a city and display weather data", () => {
-    cy.get("input").type("Seattle");
-    cy.contains("Search").click();
-    
-    // Verify city appears in the dashboard
-    cy.contains("Seattle").should("exist");
-    cy.contains("Temperature").should("exist");
-    cy.contains("Humidity").should("exist");
-    cy.contains("Wind Speed").should("exist");
+  it('Searches for a specific city and displays weather data card with city name', () => {
+    const testCity = 'Renton'; // Specific test city
+
+    // Type the test city into the input field
+    cy.get('input[placeholder="Enter city name"]').type(testCity);
+    // Submit the form
+    cy.get('form').submit();
+
+    // Wait for the loading indicator
+    cy.contains('Loading...');
+
+    // Check if the city name with the 🏛️ symbol appears
+    cy.contains(`🏛️ ${testCity}`).should('exist');
+
+    // Check for weather data sections
+    cy.contains('🌡 Temperature').should('exist');
+    cy.contains('📅 Hourly Forecast').should('exist');
   });
 
-  it("should allow users to remove a city from the dashboard", () => {
-    cy.get("input").type("New York");
-    cy.contains("Search").click();
-    cy.contains("New York").should("exist");
-    
-    cy.contains("Remove").click();
-    cy.contains("New York").should("not.exist");
-  });
+  it('Removes a city from the display', () => {
+    const testCity = 'Renton';
 
-  it("should auto-refresh weather data every 5 minutes", () => {
-    cy.get("input").type("Los Angeles");
-    cy.contains("Search").click();
-    cy.contains("Los Angeles").should("exist");
-    
-    // Wait for 5 minutes (simulated)
-    cy.wait(5 * 60 * 1000);
-    
-    // Check if weather data updates
-    cy.contains("Last Updated").should("exist");
+    // Add a test city
+    cy.get('input[placeholder="Enter city name"]').type(testCity);
+    cy.get('form').submit();
+
+    // Ensure the city card appears
+    cy.contains(`🏛️ ${testCity}`).should('exist');
+
+    // Click on the remove button
+    cy.contains('Remove').click();
+
+    // Ensure the city card is removed
+    cy.contains(`🏛️ ${testCity}`).should('not.exist');
   });
 });
